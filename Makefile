@@ -1,32 +1,23 @@
-# Compiler
-CXX = g++
+CC := g++
+CFLAGS := -std=c++11 -Wall
+INCLUDES := -Iinclude
+SRCDIR := src
+BUILDDIR := build
+TARGET := sudoku
+SRCS := $(wildcard $(SRCDIR)/*.cpp)
+OBJS := $(SRCS:$(SRCDIR)/%.cpp=$(BUILDDIR)/%.o)
 
-# Compiler flags
-CXXFLAGS = -Wall -std=c++11
-
-# Executable name
-TARGET = program
-
-# Source files
-SRCS = Main.cpp Cars.cpp
-
-# Object files
-OBJS = $(SRCS:.cpp=.o)
-
-# Default rule
-all: $(TARGET)
-
-# Rule to link object files and create the executable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-
-# Rule to compile source files into object files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Clean rule to remove generated files
-clean:
-	rm -f $(OBJS) $(TARGET)
-
-# Phony targets
 .PHONY: all clean
+
+all: $(BUILDDIR)/$(TARGET)
+
+$(BUILDDIR)/$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $^ -o $@
+
+$(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
+	@mkdir -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+	rm -rf $(BUILDDIR)
+
