@@ -1,11 +1,11 @@
 
 #include <iostream>
-#include "Cars.h"
+#include "Grid.h"
 
 using namespace std;
 
 int main() {
-    Cars car;
-    car.printout();
+    Grid grid;
+    grid.print();
     return 0;
 }
