@@ -1,11 +1,11 @@
 
 #include <iostream>
-#include "Grid.h"
+#include "CLI.h"
 
 using namespace std;
 
 int main() {
-    Grid grid;
-    grid.print();
+    CLI cli;
+    cli.run();
     return 0;
 }
