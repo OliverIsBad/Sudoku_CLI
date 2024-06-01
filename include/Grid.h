@@ -18,7 +18,6 @@ public:
     bool isComplete() const;
     bool setCell(int row, int col, int num);
     void clearCell(int row, int col);
-    void displayPuzzle() const;
     int  getValue(int row, int col) const;
 
 private:

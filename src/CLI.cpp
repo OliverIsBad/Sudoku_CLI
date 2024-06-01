@@ -26,19 +26,25 @@ void CLI::loadPuzzle() {
 }
 
 void CLI::handleInput() {
-    int choice;
-    cin >> choice;
-    switch (choice) {
-        case 1:
-            cout << "Loading puzzle..." << endl;
-            loadPuzzle();
-            break;
-        case 2:
-            cout << "Goodbye!" << endl;
-            break;
-        default:
-            cout << "Invalid choice. Please try again." << endl;
-            break;
-    }
+    char choice;
+    do {
+        cout << "Enter your choice (1: Load puzzle, 2: Quit, e: Exit): ";
+        cin >> choice;
+        switch (choice) {
+            case '1':
+                cout << "Loading puzzle..." << endl;
+                loadPuzzle();
+                break;
+            case '2':
+                cout << "Goodbye!" << endl;
+                break;
+            case 'e':
+                cout << "Exiting..." << endl;
+                return;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+                break;
+        }
+    } while (choice != 'e');
 }
 
